@@ -1,4 +1,5 @@
 // Assignment Code
+let generateBtn = document.querySelector("#generate")
 // Generate password function
 function generatePassword() {
   const specialCharacters = '!@#$%^&*()_-+=<>?/[]{}|';
@@ -6,19 +7,18 @@ function generatePassword() {
   const lowercaseCharacters = 'abcdefghijklmnopqrstuvwxyz';
   const uppercaseCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 // Get password length
-
-  let passwordLength = parseInt(prompt("How long would you like your password? Choose between 8 and 128."));
+    let passwordLength = parseInt(prompt("How long would you like your password? Choose between 8 and 128."));
 // Make sure password legnth is between 8 and 128.
   while (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
       alert("Please enter a number between 8 and 128.");
       passwordLength = parseInt(prompt("How long would you like your password? Choose between 8 and 128."));
   }
-// Get user input to add different types of characters
+// Get user input to add different types of characters.
   let includeSpecial = confirm("Include special characters?");
   let includeNumeric = confirm("Include numeric characters?");
   let includeLowercase = confirm("Include lowercase characters?");
   let includeUppercase = confirm("Include uppercase characters?");
-// Make sure user chooses at least one character type
+// Make sure user chooses at least one character type.
   while (!(includeSpecial || includeNumeric || includeLowercase || includeUppercase)) {
       alert("You must choose at least one character type.");
       includeSpecial = confirm("Include special characters?");
@@ -41,4 +41,6 @@ function generatePassword() {
   document.getElementById('password').textContent = password;
 
 }
+// Added event listener. When generate button is clicked the generate password function will run.
+generateBtn.addEventListener("click", generatePassword);
 
